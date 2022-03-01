@@ -33,26 +33,11 @@ void softmax(vector<float> v){
     }
     return;
 }
-
-                co1=column(inputmatrixfile);
-                row1=row(inputmatrixfile);
-		//1D array inputmatrix1 is stored
-                filetovector(inputmatrixfile,inputmatrix1); 
-		//Column and row number for weightmatrix    
-                co2=column(weightmatrixfile);
-                row2=row(weightmatrixfile);
-		//1D array weightmatrix is stored   
-                filetovector(weightmatrixfile,weightmatrix1);  
-		//Column and row number for biasmatrix
-                co3=column(biasmatrixfile);
-                row3=row(biasmatrixfile);
+void openblas(vector<float> input,vector<float> weight, vector<float> bias,vector<float> output, int a, int b,int c){
                 int k=0;   
-		//1D aaray biasmatrix is stored
-                filetovector(biasmatrixfile,biasmatrix1);
-		//Sets outputmatrix=inputmatrix*weightmatrix
-                cblas_sgemm(CblasColMajor, CblasNoTrans, CblasNoTrans,
-                row1, co2, co1, 1.0, inputmatrix1, row1, weightmatrix1, co1, 0.0, outputmatrix1, row1);
-                for(k=0;k<row1*co2;k++){                    
-                 outputmatrix1[k]+=biasmatrix1[k];
+                cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans,
+                a, c, b, 1.0, input, b, weight, c, 0.0, output, c);
+                for(k=0;k<a*c;k++){                    
+                 output[k]+=bias[k];
                  }  
-                vectortofile(outputmatrixfile,outputmatrix1,row1,co2);
+                }
