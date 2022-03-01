@@ -55,19 +55,19 @@ void filetomatrix(string &filename, float inputmatrix[1000][1000]){
 }
 
 //Takes input from file in the form of a 1D array
-vector<vector<float>> filetovector(string &filename){
+vector<float> filetovector(string &filename){
 	ifstream inputfile;
                 inputfile.open(filename);
               
                 float x;
-	vector<vector<int>>v;
 	vector<int>ans;
                 while (inputfile>>x)
                  {
                 ans.push_back(x);
-                 }v.push_back(ans);
+                 }
 	
                  inputfile.close();
+	return ans;
 }
 
 //Return no. of rows 
