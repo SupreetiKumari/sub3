@@ -43,7 +43,15 @@ int main(int argc, char **argv)
 	char* tt= t;
 	pred_t* pred;
           extern libaudioAPI(tt,pred);
-	
+	 string highest,middle,lowest;
+  int inthighest,intmiddle,intlowest;
+  float probhighest,probmiddle,problowest;inthighest = *(pred).label;
+	probhighest= *(pred).prob;
+  intmiddle= *(pred +1).label; probmiddle = *(pred+1).prob ; intlowest = *(pred+2).label; problowest = *(pred+2).prob; 
+	ofstream outfile;
+	outfile.open("outputfile.txt",std::ios_base::app);
+	outfile<<highest<<" "<<middle<<" "<<lowest<<" "<<probhighest<<" "<<robmiddle<<" "<<problowest<<"\n;
+  return 0;
   
          
 	   
