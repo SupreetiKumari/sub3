@@ -36,8 +36,14 @@ int main(int argc, char **argv)
             }
           vector<float> out();
           out=filetovector(inputfeaturefile);
-	  
-          extern libaudioAPI(out,
+	  string t="";
+	for(int i=0;i<250;i++)
+	{
+		t=t+to_string(out[i])+" ";}
+	char* tt= t;
+	pred_t* pred;
+          extern libaudioAPI(tt,pred);
+	
   
          
 	   
