@@ -33,7 +33,7 @@ void softmax(vector<float> v){
     }
     return;
 }
-void openblas(vector<float> input,vector<float> weight, vector<float> bias,vector<float> output, int a, int b,int c){
+void fcblas(vector<float> input,vector<float> weight, vector<float> bias,vector<float> output, int a, int b,int c){
                 int k=0;   
                 cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans,
                 a, c, b, 1.0, input, b, weight, c, 0.0, output, c);
