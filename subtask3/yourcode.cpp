@@ -2,6 +2,9 @@
 #include <math.h>
 #include <string>
 #include <fstream>
+#include <filecheck.h>
+#include <IO.h>
+#include <helper.h>
 using namespace std;
 
 typedef struct{
@@ -33,6 +36,7 @@ int main(int argc, char **argv)
             }
           vector<float> out();
           out=filetovector(inputfeaturefile);
+	  
           extern libaudioAPI(out,
   
          
