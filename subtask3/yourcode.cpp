@@ -34,7 +34,7 @@ int main(int argc, char **argv)
                      << "\n";
                 return 0;
             }
-          vector<float> out();
+          vector<float> out;
           out=filetovector(inputfeaturefile);
 	  string t="";
 	for(int i=0;i<250;i++)
