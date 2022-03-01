@@ -1,48 +1,12 @@
-void relu(string fileinput,string fileoutput){
-    ifstream file1 (fileinput);
-    int noc;
-    int nor;
-    int i,j;
-    string line;
-    //Checks if the input file exists
-    //If not found, displays an error message
-    if(!file1.is_open()){
-         cout<<"File containing inputmatrix cannot be opened."<<"\n";
-         return;
-    }
-    getline(file1,line);
-    noc=stoi(line);
-    getline(file1,line);
-    nor=stoi(line);
-    float inputmatrix[nor][noc];
-    //Storing elements from input file in inputmatrix
-        for(j=0;j<noc;j++){
-        for(i=0;i<nor;i++)
-            {
-                getline(file1,line);
-                inputmatrix[i][j]=stof(line);
-            }
-        }
-    file1.close();
-    float outputmatrix[nor][noc];
+void relu(vector<float> vec){
+    
+    vector<float> output();
     //relu function is defined as relu(x)=max(x,0)
-    for(i=0;i<nor;i++){
-        for(j=0;j<noc;j++){
-            if(inputmatrix[i][j]>0)outputmatrix[i][j]=inputmatrix[i][j];
-            else outputmatrix[i][j]=0;
-        }
-    }
-    ofstream file2(fileoutput);
-    file2<<noc<<"\n";
-    file2<<nor<<"\n";
-    //Displaying the output in output file in column major order
-    for(j=0;j<noc;j++){
-    for(i=0;i<nor;i++){
-        
-            file2<<outputmatrix[i][j]<<"\n";
-        }
-    }
-    file2.close();
+    for(auto x:vec){
+    if(x>0){
+    output.push_back(x);}
+    else{
+    output.push_back(0);}}
     return;
 }
 
