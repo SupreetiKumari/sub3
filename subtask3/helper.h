@@ -1,49 +1,35 @@
+#include <vector>
+#include <string.h>
+#include <iostream>
+#include <fstream>
+#include <stdlib.h>
+#include <cblas.h>
+#include "filecheck.h"
+#include "IO.h"
+
 void relu(vector<float> vec){
-    
-    vector<float> output();
+    int i=0;
     //relu function is defined as relu(x)=max(x,0)
     for(auto x:vec){
     if(x>0){
-    output.push_back(x);}
+    vec[i++]=x;}
     else{
-    output.push_back(0);}}
+    vec[i++]=0;}}
     return;
 }
 
 
-void softmax(string fileinput,string fileoutput){
-    ifstream file1 (fileinput);
-    string line;
-    int n;
-    //Checks if the input file exists
-    //If not found, displays an error message
-    if(!file1.is_open()){
-         cout<<"File containing inputvector cannot be opened."<<"\n";
-         return;
-    }
-    getline(file1,line);
-    n=stoi(line);
-    int i;
+void softmax(vector<float> v){
     float sum=0;
-    float inputvector[n];
-        for(i=0;i<n;i++)
+        for(auto i=v.begin();i!=v.end();i++)
             {
-                getline(file1,line);
-                inputvector[i]=stof(line);
                 //Calculates sum of e^x values of all elements of entire vector
-                sum+=exp(stof(line));
+                sum+=exp(v[i]);
             }
-    file1.close();
-    float outputvector[n];
-    for(i=0;i<n;i++){
+    for(auto j=v.begin();j!=v.end();j++){
         //softmax function is defined as softmax(x)=(e^x/sum of e^x values of all elements of entire vector)
-        float x=exp(inputvector[i]);
-        outputvector[i]=(x/sum);
-    }
-    ofstream file2(fileoutput);
-    file2<<n<<"\n";
-    for(i=0;i<n;i++){
-        file2<<outputvector[i]<<"\n";
+        float x=exp(v[i]);
+        v[i]=(x/sum);
     }
     return;
 }
