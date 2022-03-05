@@ -24,7 +24,7 @@ void softmax(vector<float> v){
         for(auto i=v.begin();i!=v.end();i++)
             {
                 //Calculates sum of e^x values of all elements of entire vector
-                sum+=exp(v[i]);
+                sum+= exp(i);
             }
     for(auto j=v.begin();j!=v.end();j++){
         //softmax function is defined as softmax(x)=(e^x/sum of e^x values of all elements of entire vector)
