@@ -34,15 +34,8 @@ int main(int argc, char **argv)
                      << "\n";
                 return 0;
             }
-          vector<float> out;
-          out=filetovector(inputfeaturefile);
-	  string t="";
-	for(int i=0;i<250;i++)
-	{
-		t=t+to_string(out[i])+" ";}
-	char* tt= t;
 	pred_t* pred;
-          extern libaudioAPI(tt,pred);
+          extern libaudioAPI(inputfeaturefile,pred);
 	 string highest,middle,lowest;
   int inthighest,intmiddle,intlowest;
   float probhighest,probmiddle,problowest;inthighest = *(pred).label;
