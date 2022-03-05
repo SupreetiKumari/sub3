@@ -28,16 +28,16 @@ map<int,string> m{
 	{9,"off"},
 	{10,"stop"},
 	{11,"go"},};
-        //Checks if second argument in command line is fully connected, returns an error message otherwise
+        //Checks if no. of arguments specified is correct, returns an error message otherwise
      
             if (argc != 3)
             {
                 cout << "Unfortunately you have put a wrong command."
                      << "\n";
-                cout << "The correct command is ./yourcode.out feature.txt out.txt\n";
+                cout << "The correct command is ./yourcode.out audiofeatures.txt output.txt\n";
                 return 0;
             }
-	   //Extracts filenames for all 4 files from command line arguments
+	   //Extracts input and output filenames from command line arguments
             std::string inputfeaturefile(argv[1]);
             string outputfile(argv[2]);
 	    //Checks if the given inputfile exists or not
@@ -48,24 +48,29 @@ map<int,string> m{
                      << "\n";
                 return 0;
             }
+	    //Initialising pred structure; setting labels and probabilities as 0
             pred_t pred1[3];
             pred1[0].label=0;pred1[0].prob=0.0;
-            pred1[1].label=0;pred1[1].prob=0.0;pred1[2].label=0;pred1[2].prob=0.0;
-	pred_t* pred =  pred1;
-	const char* inp = inputfeaturefile.c_str();
-	
+            pred1[1].label=0;pred1[1].prob=0.0;
+	    pred1[2].label=0;pred1[2].prob=0.0;
+	    pred_t* pred =  pred1;
+	    //Converts string to const char*
+	    const char* inp = inputfeaturefile.c_str();
+	  //Calling the libaudioAPI function
           libaudioAPI(inp,pred);
-	 string highest,middle,lowest;
-  float probhighest,probmiddle,problowest;
-  int inthighest = (pred[0]).label;
-	probhighest= (pred[0]).prob;
- int  intmiddle= (pred[1]).label;
-  probmiddle = (pred[1]).prob ;
-  int  intlowest = (pred[2]).label; problowest = (pred[2]).prob;
-	highest=m[inthighest];middle=m[intmiddle];lowest=m[intlowest];
-	ofstream outfile;
-	outfile.open(outputfile,std::ios_base::app);
-	
+	  string highest,middle,lowest;
+	  float probhighest,probmiddle,problowest;
+	  int inthighest = (pred[0]).label;
+	  probhighest= (pred[0]).prob;
+	  int  intmiddle= (pred[1]).label;
+	  probmiddle = (pred[1]).prob ;
+  	  int intlowest = (pred[2]).label; 
+	  problowest = (pred[2]).prob;
+	  //Identifying 3 audio keywords with highest probabilities based on the keys
+	  highest=m[inthighest];middle=m[intmiddle];lowest=m[intlowest];
+	  ofstream outfile;
+	  outfile.open(outputfile,std::ios_base::app);
+	//Appending the output to outputfile
 	outfile<<inputfeaturefile<<" "<<highest<<" "<<middle<<" "<<lowest<<" "<<probhighest<<" "<<probmiddle<<" "<<problowest<<"\n";
   return 0;
   
