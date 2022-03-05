@@ -70,22 +70,3 @@ vector<float> filetovector(string &filename){
 	return ans;
 }
 
-//Return no. of rows 
-int row(string &filename){
-		ifstream inputfile;
-                inputfile.open(filename);
-                int c,r;
-                inputfile>>c;
-                inputfile>>r;
-                return r;
-}
-
-//Returns no. of columns
-int column(string &filename){
-ifstream inputfile;
-                inputfile.open(filename);
-                int c,r;
-                inputfile>>c;
-                inputfile>>r;
-                return c;
-}
