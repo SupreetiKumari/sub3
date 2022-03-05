@@ -64,7 +64,7 @@ map<int,string> m{
   int  intlowest = (pred[2]).label; problowest = (pred[2]).prob;
 	highest=m[inthighest];middle=m[intmiddle];lowest=m[intlowest];
 	ofstream outfile;
-	outfile.open("outputfile.txt",std::ios_base::app);
+	outfile.open(outputfile,std::ios_base::app);
 	
 	outfile<<inputfeaturefile<<" "<<highest<<" "<<middle<<" "<<lowest<<" "<<probhighest<<" "<<probmiddle<<" "<<problowest<<"\n";
   return 0;
