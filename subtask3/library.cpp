@@ -39,11 +39,7 @@ m[6]= "left"; m[7]= "right"; m[8]="on";m[9]="off";m[10]="stop";m[11]="go";
 pred_t* libaudioAPI(const char* audiofeatures, pred_t* pred)
 {
   vector<float>inputfeature;
-  for(auto x: audiofeatures)
-  {
-    float t= strtof(x);
-    inputfeature.push_back(t);
-  }
+  inputfeature=filetovector(audiofeatures);
   fcblas(inputfeature,w1,b1,out1,1,250,144);
   relu(out1);
   fcblas(out1,w2,b2,out2,1,144,144);
