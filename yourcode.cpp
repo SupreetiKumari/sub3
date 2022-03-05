@@ -10,6 +10,19 @@ int label;
 float prob;
 }pred_t;
  extern pred_t* libaudioAPI(const char* audiofeatures,pred_t* pred);
+map<int,string> m{
+	{0,"_silence_"},
+	{1,"_unknown_"},
+	{2,"yes"},
+	{3,"no"},
+	{4,"up"},
+	{5,"down"},
+	{6,"left"},
+	{7,"right"},
+	{8,"on"},
+	{9,"off"},
+	{10,"stop"},
+	{11,"go"},};
 int main(int argc, char **argv)
 {
         //Checks if second argument in command line is fully connected, returns an error message otherwise
@@ -42,6 +55,7 @@ int main(int argc, char **argv)
   int inthighest = (*pred).label;
 	probhighest= (*pred).prob;
  int  intmiddle= (*(pred +1)).label; probmiddle = (*(pred+1)).prob ;int  intlowest = (*(pred+2)).label; problowest = (*(pred+2)).prob; 
+	highest=m[inthighest];middle=m[intmiddle];lowest=m[intlowest];
 	ofstream outfile;
 	outfile.open("outputfile.txt",std::ios_base::app);
 	outfile<<highest<<" "<<middle<<" "<<lowest<<" "<<probhighest<<" "<<probmiddle<<" "<<problowest<<"\n";
