@@ -44,7 +44,7 @@ map<int,string> m{
             if (checkinputfile(inputfeaturefile) == 0)
             {
           
-                cerr << "The inputmatrixfile file unfortunately could not be opened. Please give a valid file"
+                cerr << "The audiofeatures file unfortunately could not be opened. Please give a valid file"
                      << "\n";
                 return 0;
             }
