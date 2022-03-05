@@ -35,6 +35,7 @@ void softmax(vector<float>& v){
     return;
 }
 vector<float> fcblas(vector<float> input,vector<float> weight, vector<float> bias, int a, int b,int c){
+    //Conversion of input,weight and bias vectors into arrays
                 int k=0,i;
                 int n=input.size();
                 float input1[n];
@@ -53,12 +54,14 @@ vector<float> fcblas(vector<float> input,vector<float> weight, vector<float> bia
                 for(i=0;i<n;i++)
                 {
                 bias1[i]=bias[i];}
-                
+                //output1=input1*weight1
                 cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans,
                 a, c, b, 1.0, input1, b, weight1, c, 0.0, output1, c);
                 for(k=0;k<a*c;k++){                    
                  output1[k]+=bias1[k];
-                 }  vector<float>output;
+                 }  
+                vector<float>output;
+                //Returning output in the form of vector
                 for(i=0;i<a*c;i++){
                 output.push_back(output1[i]);
                 
