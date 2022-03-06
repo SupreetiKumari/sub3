@@ -4,6 +4,21 @@
 #include <fstream>
 using namespace std;
 
+bool checkinputfile(string &filename)
+{
+    ifstream inputfile;
+    inputfile.open(filename);
+    if(!inputfile.is_open())
+    {
+        inputfile.close();
+        return 0;
+    }
+    else
+    {
+        inputfile.close();
+        return 1;
+    }
+}
 //Writes the outputmatrix to output file in column major order
 void matrixtofile(string &filename, float outputmatrix[1000][1000],int r,int c){
  int i,j;
