@@ -17,7 +17,7 @@ with the 3 highest probabilities among the 12 audio features.
 4.yourcode.cpp : The main file which links to the audio library and outputs the top 3 audio keywords with the maximum softmax probability
 5.libaudio.so : This is the library that we are creating with the help of audio.cpp.
 
-FUNCTION DESCRIPTION
+FUNCTION DESCRIPTION-
 
 It executes the functions fcblas,relu and softmax in the order: FCBLAS1 [250x144] -> RELU -> FCBLAS2 [144x144] -> RELU -> FCBLAS3 [144X144] -> 
 RELU -> FCBLAS4 [144x12] -> softmax.
