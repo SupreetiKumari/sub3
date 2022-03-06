@@ -4,14 +4,13 @@ CC=g++
 
 		
 target1: yourcode.cpp
-	$(CC)  ${CFLAGS} -g -I /home/parallels/Desktop/sub3-main/new/include -L /home/parallels/Desktop/sub3-main/new/lib -o yourcode.out yourcode.cpp -L . -laudio -lopenblas -lgfortran
+	$(CC)  ${CFLAGS} -g -I $(MKL_BLAS_PATH)/include -L $(MKL_BLAS_PATH)/lib -o yourcode.out yourcode.cpp -L . -laudio -lopenblas -lgfortran
 
-yourcode.o: yourcode.cpp IO.h library.so library.cpp filecheck.h
+yourcode.o: yourcode.cpp IO.h libaudio.so audio.cpp 
 	$(CC) -c yourcode.cpp
 
 .PHONY: clean
 
 clean:
 	rm -f *.o yourcode.out
-	
 	
