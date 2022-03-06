@@ -75,14 +75,14 @@ pred_t* libaudioAPI(const char* audiofeatures, pred_t* pred)
        
         if (out4[i] > probhighest)
         { 
-         problowest = probmiddle;
-         probmiddle = probhighest;
+         problowest = probmiddle; intlowest = intmiddle;
+         probmiddle = probhighest; intmiddle = inthighest;
          probhighest = out4[i];
          inthighest=i;
         }      
         else if (out4[i] > probmiddle)
 	{
-	problowest = probmiddle;
+	problowest = probmiddle;intlowest = intmiddle;
         probmiddle = out4[i];
         intmiddle=i;
         }
