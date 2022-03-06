@@ -4,7 +4,6 @@
 #include <fstream>
 #include <stdlib.h>
 #include <cblas.h>
-#include "filecheck.h"
 #include "IO.h"
 
 void relu(vector<float>& vec){
